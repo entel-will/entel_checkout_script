@@ -1,0 +1,101 @@
+/*------ shipping data ------*/
+
+#shipping-data {
+    .step {
+        span[data-i18n='shipping.title'] {
+            &::before {
+                width: 20px;
+                content: "2";
+                height: 20px;
+                margin: 0 auto;
+                font-size: 10px;
+                color: white;
+                line-height: 20px;
+                margin-right: 7px;
+                text-align: center;
+                border-radius: 50%;
+                display: inline-block;
+                vertical-align: middle;
+                border: 2px solid #FF6702;
+                background-color: #FF6702;
+            }
+
+            &::after {
+                line-height: 1;
+                font-size: 18px;
+                vertical-align: middle;
+                content: "Dirección de entrega";
+                display: inline-block;
+            }
+        }
+
+        &.filled {
+            span[data-i18n='clientProfileData.identification'] {
+                &::before {
+                    color: white;
+                    background-color: #FF6702;
+                    content: url("https://enteltest.vteximg.com.br/arquivos/check-white-checkout.png");
+                }
+            }
+        }
+    }
+    
+    .ship-more-info,
+    .ship-reference {
+        width: 100% !important;
+
+        @media (min-width: 640px) {
+            width: 49% !important;
+        }
+    }
+
+    #gtm-label-shipping {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 17px;
+        padding: 14px 0;
+    
+        @media (min-width: 640px) {
+            padding: 0 0 14px 0;
+        }
+    }
+
+    #force-shipping-fields {
+        display: none;
+    }    
+
+    .search-another-address-btn {
+        width: 153px;
+        height: 30px;
+        font-size: 12px;
+        color: #FF6702;
+        line-height: 30px;
+        text-align: center;
+        border-radius: 90px;
+        display: inline-block;
+        border: 1px solid #FF6702;
+    }
+
+    .address-data .box-delivery .ship-filled-data {
+        width: 100% !important;
+        color: #0154A0;
+
+        br {
+            display: none;
+        }
+    }
+
+    .btn-dir-here {
+        font-size: 12px;
+        color: #0154A0;
+        margin-top: 5px;
+        
+        a {
+            font-weight: bold;
+            font-size: 12px;
+            line-height: 14px;
+            color: #0154A0;
+            text-decoration: underline !important;
+        }
+    }
+}
