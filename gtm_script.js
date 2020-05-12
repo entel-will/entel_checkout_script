@@ -1,55 +1,3 @@
-/* -------------------------------------- */
-/* -------------------------------------- */
-/* --------------- HOTJAR --------------- */
-/* -------------------------------------- */
-/* -------------------------------------- */
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-/*let removePoll = function () {
-    $('#_hj_poll_container').parent().remove()
-}
-
-let addEventExitIntent = function () {
-    // adding event listener
-    window.onbeforeunload = function () {
-        // load trigger hotjar to show poll
-        hj('trigger', 'windows_closing')
-        event.preventDefault()
-        event.returnValue = 'No te vayas :( ¿Debemos mejorar algo?'
-        return true
-    }
-}
-
-let removeEventExitIntent = function () {
-    // removing event listener
-    window.onbeforeunload = false
-}
-
-// Searching poll's container to remove
-let setIntervalPoll = setInterval(function () {
-    if (document.querySelectorAll('#_hj_poll_container').length) {
-        clearInterval(setIntervalPoll)
-    } else {
-        removePoll()
-    }
-}, 1000)
-
-// load event listener
-addEventExitIntent()
-
-// add event listener click
-window.addEventListener('click', function(e) {
-    var id = e.target.id
-
-    // if click id is payment button
-    if (id === 'payment-data-submit') {
-        removeEventExitIntent()
-        removePoll()
-    } else {
-        addEventExitIntent()
-    }
-})*/
-
 /*--------------------------------------------------------------------------------------------------------------------*/
 
 /* -------------------------------------- */
@@ -356,3 +304,57 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
     }
     $(this).toggleClass('active')
 })*/
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+/* -------------------------------------- */
+/* -------------------------------------- */
+/* ------------ INPUT CONTROL ----------- */
+/* -------------------------------------- */
+/* -------------------------------------- */
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+function control_inputs() {
+    int_piso = setInterval(function () {
+        if ($('#ship-more-info').length > 0) {
+            $('#ship-more-info').attr('maxlength','30')
+            $('#ship-more-info').attr('data-parsley-maxlength','30')
+            clearInterval(int_piso)
+        }
+    }, 500)
+
+    int_ref = setInterval(function () {
+        if ($('#ship-reference').length > 0) {
+            $('#ship-reference').attr('maxlength','80')
+            $('#ship-reference').attr('data-parsley-maxlength','80')
+            clearInterval(int_ref)
+        }
+    }, 500)
+}
+
+function other_address() {
+    int_other_address = setInterval(function () {
+        if ($('.search-another-address-btn').length > 0) {
+            $('.search-another-address-btn').click(function() {
+                control_inputs()
+            })
+            clearInterval(int_other_address)
+        }
+    }, 500)
+}
+
+function edit_address() {
+    int_edit_address = setInterval(function () {
+        if ($('#edit-shipping-data').length > 0) {
+            $('#edit-shipping-data').click(function() {
+                other_address()
+            })
+            clearInterval(int_edit_address)
+        }
+    }, 500)
+}
+
+control_inputs()
+other_address()
+edit_address()
