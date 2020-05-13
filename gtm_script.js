@@ -377,11 +377,67 @@ function control_inputs_names() {
     }, 500)
 }
 
+function control_phone() {
+    int_phone = setInterval(function () {
+        if ($('#client-phone').length > 0) {
+            $('body').find('#client-phone').on('input', function(e) {
+                // only numbers
+                let current_key = $(e.target).val()
+                $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
+            })
+            clearInterval(int_phone)
+        }
+    }, 500)
+}
+
+function control_document() {
+    int_document = setInterval(function () {
+        if ($('#client-document').length > 0) {
+            // lenght limit
+            $('#client-document').attr('maxlength','8')
+            $('#client-document').attr('minlength','8')
+
+            $('body').find('#client-document').on('input', function(e) {
+                // only numbers
+                let current_key = $(e.target).val()
+                $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
+            })
+            clearInterval(int_document)
+        }
+    }, 500)
+}
+
+function control_ruc() {
+    int_ruc = setInterval(function () {
+        if ($('#client-company-document').length > 0) {
+            // lenght limit
+            $('#client-company-document').attr('maxlength','11')
+            $('#client-company-document').attr('minlength','11')
+
+            $('body').find('#client-company-document').on('input', function(e) {
+                let current_key = $(e.target).val()
+                // only numbers
+                if (current_key[0] !== '1') {
+                    $(e.target).val('')
+                } else {                    
+                    $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
+                }                
+            })
+            clearInterval(int_ruc)
+        }
+    }, 500)
+}
+/****************
+::::EDIT NAME::::
+****************/
 function control_edit_name() {
     int_edit_name = setInterval(function () {
         if ($('#edit-profile-data').length > 0) {
             $('#edit-profile-data').click(function() {
                 control_inputs_names()
+                control_phone()
+                control_document()
+                control_ruc()
             })
             clearInterval(int_edit_name)
         }
@@ -389,4 +445,7 @@ function control_edit_name() {
 }
 
 control_inputs_names()
+control_phone()
+control_document()
+control_ruc()
 control_edit_name()
