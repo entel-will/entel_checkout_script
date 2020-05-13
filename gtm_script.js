@@ -381,8 +381,8 @@ function control_phone() {
     int_phone = setInterval(function () {
         if ($('#client-phone').length > 0) {
             // lenght limit
-            $('#client-phone').attr('maxlength','11')
-            $('#client-phone').attr('minlength','11')
+            $('#client-phone').attr('maxlength','9')
+            $('#client-phone').attr('minlength','9')
 
             $('body').find('#client-phone').on('input', function(e) {
                 let current_key = $(e.target).val()
