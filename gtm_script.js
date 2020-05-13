@@ -358,3 +358,35 @@ function edit_address() {
 control_inputs()
 other_address()
 edit_address()
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+function control_inputs_names() {
+    int_ape_mat = setInterval(function () {
+        if ($('#client-appat').length > 0) {
+            $('#client-appat').attr('maxlength','20')
+            clearInterval(int_ape_mat)
+        }
+    }, 500)
+
+    int_ape_pat = setInterval(function () {
+        if ($('#client-apmat').length > 0) {
+            $('#client-apmat').attr('maxlength','20')
+            clearInterval(int_ape_pat)
+        }
+    }, 500)
+}
+
+function control_edit_name() {
+    int_edit_name = setInterval(function () {
+        if ($('#edit-profile-data').length > 0) {
+            $('#edit-profile-data').click(function() {
+                control_inputs_names()
+            })
+            clearInterval(int_edit_name)
+        }
+    }, 500)
+}
+
+control_inputs_names()
+control_edit_name()
