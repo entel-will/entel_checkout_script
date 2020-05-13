@@ -380,10 +380,18 @@ function control_inputs_names() {
 function control_phone() {
     int_phone = setInterval(function () {
         if ($('#client-phone').length > 0) {
+            // lenght limit
+            $('#client-phone').attr('maxlength','11')
+            $('#client-phone').attr('minlength','11')
+
             $('body').find('#client-phone').on('input', function(e) {
-                // only numbers
                 let current_key = $(e.target).val()
-                $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
+                // only numbers
+                if (current_key[0] !== '9') {
+                    $(e.target).val('')
+                } else {                    
+                    $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
+                }                
             })
             clearInterval(int_phone)
         }
@@ -421,7 +429,7 @@ function control_ruc() {
                     $(e.target).val('')
                 } else {                    
                     $(e.target).val(current_key.replace(/[^0-9.]/g, ''))
-                }                
+                }
             })
             clearInterval(int_ruc)
         }
