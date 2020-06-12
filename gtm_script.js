@@ -211,61 +211,6 @@ var interval_modalerrorpago = setInterval(function() {
 
 /* -------------------------------------- */
 /* -------------------------------------- */
-/* ---------- RECOJO EN TIENDA ---------- */
-/* -------------------------------------- */
-/* -------------------------------------- */
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-
-/*let intervalVar,
-    stringPickupInStore = '<div class="pickup-in-store-title">O también puedes recoger en tienda</div>'
-    + '<p class="pickup-in-store">'
-        + '<span class="pickup-in-store__check"></span>'
-        + '<img class="icon-store" src="https://enteltest.vteximg.com.br/arquivos/icon-pick-up-in-store.png" alt="Recojo en tienda - Entel" />'
-        + '<span class="pickup-in-store__title"><b>Recojo en tienda Jockey Plaza GRATIS</b></span>'
-        + '<span class="pickup-in-store__schedule"><b>Atención:</b><br>Lunes - Domingo : 10:00am a 10:00pm</span>'
-        + '<br>(Tienes 2 días hábiles para recoger tu pedido)'
-    + '</p>'
-
-// append html into container
-function load_pickap_in_store() {
-    intervalVar = setInterval(function () {
-        if (window.location.href.indexOf('shipping') > -1 && $('#map-canvas').length > 0) {
-            $('body').find('.ship-reference.input.text').after(stringPickupInStore)
-    
-            // event to activate pickup in store
-            $('body').find('.pickup-in-store').click(function() {
-                // pickup in store off
-                if ($(this).hasClass('active') == true) {
-                    $('body').find('#ship-reference').val($('body').find('#ship-reference').val().replace('Retiro en Tienda Jockey - ',''))                    
-                    $('body').find('#ship-reference').removeAttr('disabled')
-                    $('body').find('.ship-reference.input.text').css('opacity','')
-                    $('body').find('.address-shipping-options').css({'opacity':'','position':'','z-index':''})
-                // pickup in store on
-                } else {
-                    $('body').find('#ship-reference').val('Retiro en Tienda Jockey - ' + $('body').find('#ship-reference').val())                    
-                    $('body').find('#ship-reference').attr('disabled','disabled')
-                    $('body').find('.ship-reference.input.text').css('opacity','0.6')
-                    $('body').find('.address-shipping-options').css({'opacity':'0','position':'absolute','z-index':'-1'})                
-                }
-                $(this).toggleClass('active')
-            })
-    
-            $('body').find('.search-another-address-btn').click(function() {
-                load_pickap_in_store()
-            })
-    
-            clearInterval(intervalVar)
-        }
-    }, 100)
-}
-
-load_pickap_in_store()*/
-
-/*--------------------------------------------------------------------------------------------------------------------*/
-
-/* -------------------------------------- */
-/* -------------------------------------- */
 /* ---------- CAMPAÑA INTERBANK---------- */
 /* -------------------------------------- */
 /* -------------------------------------- */
@@ -315,6 +260,10 @@ $('body').find('.entel-checkout-campaign .entel-checkout-campaign__open-close').
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 
+/*********************
+::::INPUTS ADDRESS::::
+**********************/
+
 function control_inputs() {
     int_piso = setInterval(function () {
         if ($('#ship-more-info').length > 0) {
@@ -331,6 +280,33 @@ function control_inputs() {
             clearInterval(int_ref)
         }
     }, 500)
+
+    int_map = setInterval(function () {
+        //console.log('interval')
+        if ($('#map-canvas').length > 0) {
+            //console.log('mapa')
+            setTimeout(() => {
+                if ($('.box-delivery input[name="neighborhood"][type="hidden"]').length > 0) {
+                    //console.log('gol')
+                    let depa = $('.box-delivery input[name="state"][type="hidden"]').val(),
+                        prov = $('.box-delivery input[name="city"][type="hidden"]').val(),
+                        html_select = ''
+                    //console.log(depa)
+                    //console.log(prov)
+                    if (depa.toLowerCase() === 'lima' && prov.toLowerCase() === 'lima') {
+                        html_select = '<p class="ship-neighborhood input text"><label for="ship-neighborhood"><span data-i18n="shipping.addressForm.district">Distrito</span> <span class="item-required">*</span></label><select id="ship-neighborhood" class="input-xlarge error" name="neighborhood" data-parsley-trigger="change blur" data-parsley-required="true" data-based-city-change="true" data-parsley-id="1404"><option></option><option value="Lima">Lima</option><option value="Ancon">Ancon</option><option value="Ate">Ate</option><option value="Barranco">Barranco</option><option value="Breña">Breña</option><option value="Carabayllo">Carabayllo</option><option value="Chaclacayo">Chaclacayo</option><option value="Chorrillos">Chorrillos</option><option value="Cieneguilla">Cieneguilla</option><option value="Comas">Comas</option><option value="El Agustino">El Agustino</option><option value="Independencia">Independencia</option><option value="Jesus Maria">Jesus Maria</option><option value="La Molina">La Molina</option><option value="La Victoria">La Victoria</option><option value="Lince">Lince</option><option value="Los Olivos">Los Olivos</option><option value="Lurigancho">Lurigancho</option><option value="Lurin">Lurin</option><option value="Magdalena Del Mar">Magdalena Del Mar</option><option value="Miraflores">Miraflores</option><option value="Pachacamac">Pachacamac</option><option value="Pucusana">Pucusana</option><option value="Pueblo Libre">Pueblo Libre</option><option value="Puente Piedra">Puente Piedra</option><option value="Punta Hermosa">Punta Hermosa</option><option value="Punta Negra">Punta Negra</option><option value="Rimac">Rimac</option><option value="San Bartolo">San Bartolo</option><option value="San Borja">San Borja</option><option value="San Isidro">San Isidro</option><option value="San Juan De Lurigancho">San Juan De Lurigancho</option><option value="San Juan De Miraflores">San Juan De Miraflores</option><option value="San Luis">San Luis</option><option value="San Martin De Porres">San Martin De Porres</option><option value="San Miguel">San Miguel</option><option value="Santa Anita">Santa Anita</option><option value="Santa Maria Del Mar">Santa Maria Del Mar</option><option value="Santa Rosa">Santa Rosa</option><option value="Santiago De Surco">Santiago De Surco</option><option value="Surquillo">Surquillo</option><option value="Villa El Salvador">Villa El Salvador</option><option value="Villa Maria Del Triunfo">Villa Maria Del Triunfo</option></select></p>'
+                        $('.box-delivery input[name="neighborhood"][type="hidden"]').after(html_select)
+                        $('.box-delivery input[name="neighborhood"][type="hidden"]').remove()
+                    } else if (depa.toLowerCase() === 'callao' && prov.toLowerCase() === 'callao') {
+                        html_select = '<p class="ship-neighborhood input text"><label for="ship-neighborhood"><span data-i18n="shipping.addressForm.district">Distrito</span> <span class="item-required">*</span></label><select id="ship-neighborhood" class="input-xlarge error" name="neighborhood" data-parsley-trigger="change blur" data-parsley-required="true" data-based-city-change="true" data-parsley-id="7896"><option></option><option value="Bellavista">Bellavista</option><option value="Callao">Callao</option><option value="Carmen De La Legua Reynoso">Carmen De La Legua Reynoso</option><option value="La Perla">La Perla</option><option value="La Punta">La Punta</option><option value="Ventanilla">Ventanilla</option></select></p>'
+                        $('.box-delivery input[name="neighborhood"][type="hidden"]').after(html_select)
+                        $('.box-delivery input[name="neighborhood"][type="hidden"]').remove()
+                    }
+                }
+                clearInterval(int_map)
+            }, 1000)            
+        }
+    }, 500)
 }
 
 function other_address() {
@@ -338,28 +314,39 @@ function other_address() {
         if ($('.search-another-address-btn').length > 0) {
             $('.search-another-address-btn').click(function() {
                 control_inputs()
+                other_address()
             })
             clearInterval(int_other_address)
         }
     }, 500)
 }
 
-function edit_address() {
-    int_edit_address = setInterval(function () {
-        if ($('#edit-shipping-data').length > 0) {
-            $('#edit-shipping-data').click(function() {
-                other_address()
-            })
-            clearInterval(int_edit_address)
+function change_district() {
+    int_district_select = setInterval(function () {
+        if ($('#ship-neighborhood').length > 0) {    
+            $('#ship-neighborhood').on('change', '', function (e) {
+                setTimeout(() => {
+                    other_address()
+                }, 2000)
+            })    
+            clearInterval(int_district_select)
         }
     }, 500)
 }
 
-control_inputs()
-other_address()
-edit_address()
+window.addEventListener('popstate', function() {
+    if (/shipping/i.test(window.location.href)) {
+        control_inputs()
+        other_address()
+        change_district()
+    }
+})
 
 /*--------------------------------------------------------------------------------------------------------------------*/
+
+/******************
+::::INPUTS NAME::::
+*******************/
 
 function control_inputs_names() {
     int_ape_mat = setInterval(function () {
@@ -435,9 +422,7 @@ function control_ruc() {
         }
     }, 500)
 }
-/****************
-::::EDIT NAME::::
-****************/
+
 function control_edit_name() {
     int_edit_name = setInterval(function () {
         if ($('#edit-profile-data').length > 0) {
