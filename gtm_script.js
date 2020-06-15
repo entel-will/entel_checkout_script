@@ -281,7 +281,7 @@ function control_inputs() {
         }
     }, 500)
 
-    int_map = setInterval(function () {
+    /*int_map = setInterval(function () {
         //console.log('interval')
         if ($('#map-canvas').length > 0) {
             //console.log('mapa')
@@ -306,7 +306,7 @@ function control_inputs() {
                 clearInterval(int_map)
             }, 1000)            
         }
-    }, 500)
+    }, 500)*/
 }
 
 function other_address() {
