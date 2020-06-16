@@ -117,6 +117,10 @@
                     width: 49% !important;
                     float: right!important;
                     clear: none !important;
+
+                    @media (min-width: 400px) {
+                        width: 100% !important;
+                    }
                 }
         
                 &.float-width-input{
