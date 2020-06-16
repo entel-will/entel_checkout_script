@@ -118,7 +118,7 @@
                     float: right!important;
                     clear: none !important;
 
-                    @media (min-width: 400px) {
+                    @media (max-width: 400px) {
                         width: 100% !important;
                     }
                 }
