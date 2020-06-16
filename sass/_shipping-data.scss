@@ -39,14 +39,33 @@
             }
         }
     }
+
+    #ship-more-info::placeholder,
+    #ship-reference::placeholder,
+    #ship-street::placeholder,
+    #ship-number::placeholder {
+        color: #DDDDDD;
+        font-size: 12px;
+        line-height: 14px;
+    }
     
     .ship-more-info,
     .ship-reference {
-        width: 100% !important;
+        width: auto !important;
+        margin-bottom: 16px !important;
 
         @media (min-width: 640px) {
-            width: 49% !important;
+            width: auto !important;
         }
+    }
+
+    .ship-reference {
+        label {
+            span:before {
+                content: '' !important;
+                display: none !important;
+            }
+        }        
     }
 
     #gtm-label-shipping {
@@ -64,8 +83,7 @@
         display: none;
     }    
 
-    .search-another-address-btn {
-        width: 153px;
+    .search-another-address-btn {        
         height: 30px;
         font-size: 12px;
         color: #FF6702;
@@ -74,14 +92,60 @@
         border-radius: 90px;
         display: inline-block;
         border: 1px solid #FF6702;
+        width: 170px;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 16px;
     }
 
-    .address-data .box-delivery .ship-filled-data {
-        width: 100% !important;
-        color: #0154A0;
-
-        br {
-            display: none;
+    .address-data {        
+        .box-delivery {
+            .ship-filled-data {
+                width: 100% !important;
+                color: #0154A0;
+                font-size: 12px;
+                line-height: 14px;
+                margin-bottom: 16px;
+    
+                br {
+                    display: none;
+                }
+            }
+    
+            .ship-more-info {
+                &.float-rigth-input{
+                    width: 49% !important;
+                    float: right!important;
+                    clear: none !important;
+                }
+        
+                &.float-width-input{
+                    width: 100% !important;
+                }
+            }
+    
+            .ship-neighborhood {
+                label {
+                    span[data-i18n="shipping.addressForm.district"]:before {
+                        content: '' !important;
+                        display: none !important;
+                    }
+                }            
+            }
+    
+            .ship-number {
+                float: right!important;
+        
+                &.float-letf-input{
+                    float: left!important;
+                }        
+            }
+    
+            .ship-street .item-required,
+            .ship-number .item-required,
+            .ship-neighborhood .item-required {
+                display: none !important;
+            }
         }
     }
 
@@ -97,5 +161,56 @@
             color: #0154A0;
             text-decoration: underline !important;
         }
+    }
+
+    .checkout-container {
+        .orderform-template {
+            .step.accordion-group {
+                .accordion-inner {
+                    p.input label {
+                        height: auto;
+            
+                            span {
+                            font-weight: normal;
+                            display: block;
+                            font-size: 12px;
+                            line-height: 14px;
+                            margin-bottom: 5px;
+            
+                            b {
+                                font-weight: 700;
+                                font-size: 12px;
+                                line-height: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    }
+
+    /*********************/
+    /*Classes added by JS*/
+    /*********************/
+
+    #header-mensaje-custom{
+        clear: both;
+    }
+
+    #informacion-custom {
+        p {
+            font-size: 12px;
+            line-height: 14px;
+            font-weight: normal;
+            margin-bottom: 11px;
+        }        
+    }
+
+    #informacion-custom {
+        p {
+            b {
+                font-weight: 600;
+            }
+        }        
     }
 }
